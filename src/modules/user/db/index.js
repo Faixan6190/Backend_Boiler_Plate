@@ -6,4 +6,6 @@ const addData = async (data) => new User(data).save().then((user) => user.toObje
 
 const deleteById = async (id) => await User.findByIdAndDelete(id);
 
-export { getAll, addData, deleteById };
+const updateById = async (id, data) => await User.findByIdAndUpdate(id, data);
+
+export { getAll, addData, deleteById, updateById };
