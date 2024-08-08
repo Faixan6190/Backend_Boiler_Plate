@@ -1,9 +1,7 @@
-const getData = ()=> {
-    try {
-        
-    } catch (error) {
-        
-    }
-}
+import { getAll } from "../db/index.js";
 
-export default getData
+const getData = () => {
+  return getAll();
+};
+
+export default getData;

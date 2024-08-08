@@ -1,6 +1,6 @@
 import postData from "../services/post.js";
 
-const post = async (req, res) => {
+const postController = async (req, res) => {
   try {
     const data = await postData(req.body);
     res.status(200).send({ status: 200, data });
@@ -9,4 +9,4 @@ const post = async (req, res) => {
   }
 };
 
-export default post;
+export default postController;

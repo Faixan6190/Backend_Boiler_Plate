@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 app.use(helmet());
+app.use(express.json());
 
 mongoose.connect(`mongodb+srv://${ENV.DB_USER}:${ENV.DB_PASS}@cluster0.uxxmpv3.mongodb.net/${ENV.DB_NAME}`);
 

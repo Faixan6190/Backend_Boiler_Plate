@@ -1,6 +1,6 @@
 import getData from "../services/get.js";
 
-const get = async (req, res) => {
+const getController = async (req, res) => {
   try {
     const users = await getData();
     res.status(200).send({ status: 200, data: users });
@@ -9,4 +9,4 @@ const get = async (req, res) => {
   }
 };
 
-export default get;
+export default getController;

@@ -1,10 +1,12 @@
 import { Router } from "express";
-import get from "./controllers/get.js";
-import post from "./controllers/post.js";
+import getController from "./controllers/get.js";
+import postController from "./controllers/post.js";
+import deleteController from "./controllers/delete.js";
 
 const routes = Router();
 
-routes.get("/", get);
-routes.post("/", post);
+routes.get("/", getController);
+routes.post("/", postController);
+routes.delete("/:id", deleteController);
 
 export default routes;
