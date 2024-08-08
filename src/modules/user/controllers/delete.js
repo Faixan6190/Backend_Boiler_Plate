@@ -1,12 +1,13 @@
+import { DELETE_DATA_MESSAGE, INTERNAL_SERVER_ERROR_MESSAGE } from "../constants/index.js";
 import deleteData from "../services/delete.js";
 
 const deleteController = async (req, res) => {
   try {
     const { id } = req.params;
     await deleteData(id);
-    res.status(200).send({ status: 200, message: "User deleted successfully" });
+    res.status(200).send({ status: 200, message: DELETE_DATA_MESSAGE });
   } catch (error) {
-    res.status(500).send({ status: 500, message: "Internal server error" });
+    res.status(500).send({ status: 500, message: INTERNAL_SERVER_ERROR_MESSAGE });
   }
 };
 
