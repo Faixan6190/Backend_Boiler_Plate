@@ -14,7 +14,7 @@ const uploadFile = async (file) => {
     const resizePath = `src/modules/upload/files/resize-${file.filename}`;
     const filePath = `src/modules/upload/files/${file.filename}`;
     sharp(filePath)
-      .jpeg({ quality: 40 })
+      .png({ quality: 40 })
       .toFile(resizePath, async (err, info) => {
         cloudinary.uploader.upload(
           resizePath,
