@@ -8,11 +8,11 @@ const routes = Router();
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "src/modules/upload/files");
+    cb(null, `src/modules/upload/files`);
   },
   filename: function (req, file, cb) {
     const uniqueId = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    cb(null, `${uniqueId}-${file.orginalname}`);
+    cb(null, `${uniqueId}-${file.originalname}`);
   },
 });
 
