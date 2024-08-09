@@ -8,21 +8,16 @@ cloudinary.config({
   api_secret: ENV.API_SECRET,
 });
 
-const uploadFile = async (data) => {
+const uploadFile = async (file) => {
   return new Promise((resolve, reject) => {
-    fsExtra.readdir("/src/modules/upload/files", (err, files) => {
-      console.log("err, files", err, files);
-    });
+    cloudinary.uploader.upload(
+      `src/modules/upload/files/${file.filename}`,
+      { public_id: "store-images" },
+      function (error, result) {
+        console.log(result);
+      }
+    );
     resolve();
-    // cloudinary.uploader.upload(
-    //   "",
-    //   {
-    //     public_id: "shoes",
-    //   },
-    //   function (error, result) {
-    //     console.log(result);
-    //   }
-    // );
   });
 };
 
