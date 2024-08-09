@@ -10,14 +10,22 @@ cloudinary.config({
 
 const uploadFile = async (file) => {
   return new Promise((resolve, reject) => {
+    const filePath = `src/modules/upload/files/${file.filename}`;
     cloudinary.uploader.upload(
-      `src/modules/upload/files/${file.filename}`,
-      { public_id: "store-images" },
+      filePath,
+      {
+        folder: "test-images",
+        public_id: file.filename,
+      },
       function (error, result) {
-        console.log(result);
+        if (error) {
+          reject(error);
+          return;
+        }
+        fsExtra.removeSync(filePath);
+        resolve(result);
       }
     );
-    resolve();
   });
 };
 
