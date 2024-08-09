@@ -11,13 +11,13 @@ cloudinary.config({
 
 const uploadFile = async (file) => {
   return new Promise((resolve, reject) => {
-    const dir = `src/modules/upload/files`;
+    const resizePath = `src/modules/upload/files/resize-${file.filename}`;
     const filePath = `src/modules/upload/files/${file.filename}`;
     sharp(filePath)
       .jpeg({ quality: 40 })
-      .toFile(`${dir}/resize-${file.filename}`, async (err, info) => {
+      .toFile(resizePath, async (err, info) => {
         cloudinary.uploader.upload(
-          `${dir}/resize-${file.filename}`,
+          resizePath,
           {
             folder: "test-images",
             public_id: file.filename,
