@@ -10,6 +10,7 @@ const app = express();
 
 app.use(helmet());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 mongoose.connect(`mongodb+srv://${ENV.DB_USER}:${ENV.DB_PASS}@cluster0.uxxmpv3.mongodb.net/${ENV.DB_NAME}`);
 
@@ -18,6 +19,7 @@ mongoose.connection.on("connected", () => {
 });
 
 app.get("/", (req, res) => {
+  console.log("request", req.body);
   res.send("Hello World");
 });
 
