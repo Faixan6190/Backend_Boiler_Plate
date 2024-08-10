@@ -3,7 +3,6 @@ import getData from "../services/get.js";
 
 const getController = async (req, res) => {
   try {
-    console.log(req.query);
     const users = await getData(req.query);
     res.status(200).send({ status: 200, data: users });
   } catch (error) {

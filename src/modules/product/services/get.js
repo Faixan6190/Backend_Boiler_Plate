@@ -18,7 +18,8 @@ import { getAggregate } from "../db/index.js";
 
 const getData = (query) => {
   // const { title } = query;
-  console.log("query", query);
+  const { pageSize, pageNumber } = query;
+  const skip = (pageNumber - 1) * pageSize;
   return getAggregate([
     // {
     //   $match: {
@@ -27,6 +28,12 @@ const getData = (query) => {
     //     },
     //   },
     // },
+    {
+      $facet: {
+        data: [{ $skip: Number(skip) }, { $limit: Number(pageSize) }],
+        metadata: [{ $count: "total" }],
+      },
+    },
   ]);
 };
 
