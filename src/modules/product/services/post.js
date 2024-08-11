@@ -8,8 +8,8 @@ const sendEmail = () => {
     port: 465,
     secure: true,
     auth: {
-      user: "fa7614047@gmail.com",
-      pass: "vapk imva shuu ggrv",
+      user: "ENV.EMAIL",
+      pass: "ENV.PASSWORD",
     },
   });
 
