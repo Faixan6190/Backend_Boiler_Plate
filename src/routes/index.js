@@ -12,3 +12,4 @@ routes.use("/category", categoryRoutes);
 routes.use("/upload", uploadRoutes);
 
 export default routes;
+
